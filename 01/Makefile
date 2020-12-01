@@ -10,20 +10,34 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = repnrep
+NAME1 = first_part
 
-SRC = ./reportrepair.c
+NAME2 = second_part
+
+SRC1 = ./reportrepair.c
+
+SRC2 = ./second_part.c
 
 LIB = ../libftprintf/libftprintf.a
 
 FLAGS = #-Wall -Werror -Wextra
 
-all: $(NAME)
+all: first second
 
-$(NAME):
+first: $(NAME1)
+
+second: $(NAME2)
+
+
+$(NAME1):
 	@ make -C ../libftprintf/ 
-	@ gcc $(FLAGS) -o $(NAME) $(SRC) $(LIB)
-	@ echo "Compiled"
+	@ gcc $(FLAGS) -o $(NAME1) $(SRC1) $(LIB)
+	@ echo "Compiled p1"
+
+$(NAME2):
+	@ make -C ../libftprintf/ 
+	@ gcc $(FLAGS) -o $(NAME2) $(SRC2) $(LIB)
+	@ echo "Compiled p2"
 
 clean:
 	@ make -C ../libftprintf/ clean
@@ -31,7 +45,7 @@ clean:
 
 fclean: clean
 	@ make -C ../libftprintf/ fclean
-	@ /bin/rm -f $(NAME)
+	@ /bin/rm -f $(NAME1) $(NAME2)
 	@ echo "Executable and libraries removed"
 
 re : fclean all

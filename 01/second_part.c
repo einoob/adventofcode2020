@@ -1,39 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reportrepair.c                                     :+:      :+:    :+:   */
+/*   second_part.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elindber <elindber@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/01 11:54:08 by elindber          #+#    #+#             */
-/*   Updated: 2020/12/01 11:54:08 by elindber         ###   ########.fr       */
+/*   Created: 2020/12/01 15:35:38 by elindber          #+#    #+#             */
+/*   Updated: 2020/12/01 15:35:38 by elindber         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf/includes/ft_printf.h"
 #include "../libftprintf/includes/get_next_line.h"
 
-long	quick_maths(int *number_list)
+long quick_maths(int *number_list)
 {
 	int		a;
 	int		b;
+	int		c;
 
 	a = -1;
-	b = 1;
+	b = 0;
+	c = 1;
 	while (++a < 200)
 	{
-		while (b < 200)
+		while (++b < 200)
 		{
-			if (number_list[a] + number_list[b] == 2020)
+			while (++c < 200)
 			{
-				ft_printf("%d %d %d\n", number_list[a], number_list[b], number_list[a] + number_list[b]);
-				return (number_list[a] * number_list[b]);
+				if (number_list[a] + number_list[b] + number_list[c] == 2020)
+				{
+					ft_printf("%d %d %d %d\n",number_list[a], number_list[b], number_list[c], number_list[a] + number_list[b] + number_list[c]);
+					return (number_list[a] * number_list[b] * number_list[c]);
+				}
 			}
-			b++;
+			c = a + 3;
 		}
 		b = a + 2;
 	}
-	return (0);
+	return (-1);
 }
 
 int		main(int ac, char **av)
