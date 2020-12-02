@@ -20,7 +20,7 @@ SRC2 = ./second_part.c
 
 LIB = ../libftprintf/libftprintf.a
 
-FLAGS = #-Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 
 all: first second
 
